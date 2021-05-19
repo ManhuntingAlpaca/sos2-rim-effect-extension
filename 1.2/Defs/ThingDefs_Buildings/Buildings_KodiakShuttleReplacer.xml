@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>CargoShuttle</defName>
+    <label>kodiak shuttle</label>
+    <thingClass>Building</thingClass>
+    <description>A reusable shuttlecraft powered by eezo fuel pods. Can carry a significant amount of cargo.</description>
+    <graphicData>
+	  <texPath>Things/Building/Misc/KodiakShuttle/KodiakShuttle</texPath>
+	  <graphicClass>Graphic_Multi</graphicClass>
+	  <drawSize>(6,7)</drawSize>
+	</graphicData>
+    <size>(3,3)</size>
+    <rotatable>true</rotatable>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Ship</designationCategory>
+    <defaultPlacingRot>West</defaultPlacingRot>
+	<building>
+      <hasFuelingPort>true</hasFuelingPort>
+      <soundAmbient>ShuttleIdle_Ambience</soundAmbient>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <statBases>
+      <MaxHitPoints>1500</MaxHitPoints>
+      <WorkToBuild>20000</WorkToBuild>
+      <Flammability>0</Flammability>
+	  <Mass>600</Mass>
+    </statBases>
+    <costList>
+      <Plasteel>240</Plasteel>
+	  <ComponentIndustrial>12</ComponentIndustrial>
+	  <ComponentSpacer>12</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+		<massCapacity>1000</massCapacity>
+        <restEffectiveness>0.8</restEffectiveness>
+	  </li>
+      <li Class="CompProperties_ShuttleLaunchable">
+		<fuelPerTile>0.5</fuelPerTile>
+		<skyfaller>CargoShuttleSkyfaller</skyfaller>
+	  </li>
+	  <li Class="CompProperties_Refuelable">
+        <fuelCapacity>200.0</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>200</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>EezoFuelPods</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+      </li>
+		<li Class="CompProperties_BecomePawn">
+			<pawnDef>ShuttleCargoHover</pawnDef>
+		</li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_ContentsTransporter</li>
+    </inspectorTabs>
+    <placeWorkers>
+    </placeWorkers>
+		<researchPrerequisites>
+			<li>ShuttleCargo</li>
+		</researchPrerequisites>
+    <minifiedDef>MinifiedThing</minifiedDef>
+	<thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="BaseShuttle">
+    <defName>ShuttleCargoRace</defName>
+    <label>Kodiak Shuttle (hover mode)</label>
+    <description>A Kodiak shuttle set to hover mode, allowing it to be used as part of a caravan.</description>
+    <statBases>
+      <MoveSpeed>10</MoveSpeed>
+	  <Mass>600</Mass>
+      <CarryingCapacity>1000</CarryingCapacity>
+      <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+      <MeatAmount>0</MeatAmount>
+      <MarketValue>4500</MarketValue>
+    </statBases>
+    <verbs>
+    </verbs>
+    <race>
+      <intelligence>Animal</intelligence>
+      <thinkTreeMain>ShuttleThinkTree</thinkTreeMain>
+      <body>SoSShuttlecraft</body>
+      <baseBodySize>3.0</baseBodySize>
+      <baseHealthScale>3.0</baseHealthScale>
+		<packAnimal>true</packAnimal>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+          <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+          <soundCall>Pawn_Mech_Centipede_Call</soundCall>
+        </li>
+      </lifeStageAges>
+	  <ageGenerationCurve>
+        <points>
+          <li>(0,0)</li>
+		  <li>(0.001,100)</li>
+		  <li>(0.01,0)</li>
+        </points>
+      </ageGenerationCurve>
+      <soundCallIntervalRange>
+        <min>9999</min>
+        <max>9999</max>
+      </soundCallIntervalRange>
+      <soundMeleeHitPawn>Pawn_Melee_MechanoidSlash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_MechanoidSlash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_MechanoidSlash_Miss</soundMeleeMiss>
+    </race>
+    <butcherProducts>
+      <Steel>224</Steel>
+      <Plasteel>224</Plasteel>
+      <ComponentIndustrial>16</ComponentIndustrial>
+    </butcherProducts>
+	<comps>
+		<li Class="CompProperties_Refuelable">
+			<fuelCapacity>200.0</fuelCapacity>
+			<initialConfigurableTargetFuelLevel>200</initialConfigurableTargetFuelLevel>
+			<targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+			<fuelConsumptionRate>8.0</fuelConsumptionRate>
+			<fuelFilter>
+				<thingDefs>
+					<li>EezoFuelPods</li>
+				</thingDefs>
+			</fuelFilter>
+			<consumeFuelOnlyWhenUsed>false</consumeFuelOnlyWhenUsed>
+		</li>
+		<li Class="CompProperties_BecomeBuilding">
+			<buildingDef>CargoShuttle</buildingDef>
+			<fuelPerTile>0.5</fuelPerTile>
+			<skyfaller>ShuttleIncomingCargo</skyfaller>
+		</li>
+	</comps>
+  </ThingDef>
+
+	<PawnKindDef>
+    <defName>ShuttleCargoHover</defName>
+    <label>kodiak Shuttle (hover mode)</label>
+    <race>ShuttleCargoRace</race>
+	<combatPower>999999</combatPower>
+	<isFighter>false</isFighter>
+    <defaultFactionType>PlayerColony</defaultFactionType>
+    <aiAvoidCover>true</aiAvoidCover>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Building/Misc/KodiakShuttle/KodiakShuttle</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>(6.5,7.5)</drawSize>
+          <shadowData>
+            <volume>(0.6, 0.8, 0.6)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <weaponMoney>
+      <min>0</min>
+      <max>0</max>
+    </weaponMoney>
+    <weaponTags>
+    </weaponTags>
+  </PawnKindDef>
+  
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>ShuttleIncomingCargo</defName>
+    <label>shuttle (incoming)</label>
+	<thingClass>DropPodIncoming</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Shuttle/KodiakShuttle_east</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(7.5,6.5)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(3, 5)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+    </skyfaller>
+  </ThingDef>
+  
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>CargoShuttleSkyfaller</defName>
+    <label>shuttle (leaving)</label>
+	<thingClass>DropPodLeaving</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Shuttle/KodiakShuttle_west</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(7.5,6.5)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(3, 5)</shadowSize>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange><min>-40</min><max>-15</max></ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>RE_KodiakShuttle</defName>
+    <label>kodiak shuttle</label>
+    <description>An advanced shuttle propelled using small directional thrusters and a mass effect based repulsion system, the Kodiak Drop Shuttle is a common sight throughout the galaxy thanks to it's robust design and ability to make limited FTL jumps.</description>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <passability>Impassable</passability>
+    <fillPercent>1.0</fillPercent>
+    <size>(3,6)</size>
+    <graphicData>
+      <texPath>Things/Building/Misc/KodiakShuttle/KodiakShuttle</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(7,8)</drawSize>
+      <shadowData>
+        <volume>(1.8, 1.0, 4.1)</volume>
+        <offset>(0, 0, -0.1)</offset>
+      </shadowData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Flammability>1</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <killedLeavings>
+      <Plasteel>100</Plasteel>
+      <ChunkSlagSteel>4</ChunkSlagSteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </killedLeavings>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>West</defaultPlacingRot>
+    <selectable>true</selectable>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <drawerType>MapMeshOnly</drawerType>
+    <repairEffect>ConstructMetal</repairEffect>
+    <forceDebugSpawnable>true</forceDebugSpawnable>
+    <uiIconScale>1.0</uiIconScale>
+    <building>
+      <claimable>false</claimable>
+      <soundAmbient>ShuttleIdle_Ambience</soundAmbient>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+    </comps>
+    <costList>
+      <Plasteel>450</Plasteel>
+      <ComponentSpacer>24</ComponentSpacer>
+    </costList>
+    <techLevel>Ultra</techLevel>
+  </ThingDef>
+</Defs>

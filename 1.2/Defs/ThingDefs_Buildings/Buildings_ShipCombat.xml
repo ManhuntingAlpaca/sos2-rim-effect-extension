@@ -1,0 +1,63 @@
+<Defs>
+  <ThingDef ParentName="BuildingBase" Name="ShipHeatsinkEezo">
+    <defName>ShipHeatsinkEezo</defName>
+    <label>lithium heatsink</label>
+    <description>An advanced lithium-based heatsink for storing excess heat from weapons fire. Stores more heat than conventional heatsink but require element zero to build.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <size>(2,2)</size>
+    <graphicData>
+      <texPath>Things/Building/Ship/HeatsinkEezo</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2.1,4.7)</drawSize>
+    </graphicData>
+    <building>
+    </building>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.8</fillPercent>
+    <blockLight>true</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <WorkToBuild>3500</WorkToBuild>
+      <Flammability>0.7</Flammability>
+      <Beauty>-2</Beauty>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+	  <Plasteel>25</Plasteel>
+	  <ComponentSpacer>4</ComponentSpacer>
+	  <ComponentIndustrial>4</ComponentIndustrial>
+	  <RE_ElementZero>5</RE_ElementZero>
+    </costList>
+    <comps>
+      <li Class="CompProperties_ShipHeat">
+        <compClass>CompShipHeatSink</compClass>
+		<heatCapacity>300</heatCapacity>
+		<heatVentTick>120</heatVentTick>
+		<threat>2</threat>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTransmitter</compClass>
+        <transmitsPower>true</transmitsPower>
+      </li>
+    </comps>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Ship</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <tickerType>Normal</tickerType>
+    <researchPrerequisites>
+      <li>ShipHeatsink</li>
+    </researchPrerequisites>
+    <placeWorkers>
+      <li>PlaceWorker_Heater</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+  </ThingDef>
+</Defs>

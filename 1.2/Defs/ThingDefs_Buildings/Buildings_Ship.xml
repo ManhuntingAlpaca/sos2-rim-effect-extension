@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>Ship_Engine_Advanced</defName>
+		<label>element zero engine</label>
+		<designatorDropdown>Ship_Engines</designatorDropdown>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Ship/ShipEngineEezo</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6,5.5)</drawSize>
+		</graphicData>
+		<researchPrerequisites>
+			<li>ShipEngine</li>
+		</researchPrerequisites>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1</fillPercent>
+		<blockLight>true</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<statBases>
+			<WorkToBuild>40000</WorkToBuild>
+			<MaxHitPoints>1500</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<description>An eezo-powered engine capable of launching a ship into orbit. Not suitable for interplanetary travel.\n\nIn combat, provides the same speed of nuclear engines but are smaller.</description>
+		<size>(3,3)</size>
+		<receivesSignals>true</receivesSignals>
+		<designationCategory>Ship</designationCategory>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_ShipPart"/>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Refuelable">
+				<fuelCapacity>2000.0</fuelCapacity>
+				<targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+				<fuelFilter>
+					<thingDefs>
+						<li>EezoFuelPods</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<autoRefuelPercent>1</autoRefuelPercent>
+				<showFuelGizmo>false</showFuelGizmo>
+				<drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+				<drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+			<li Class="CompProperties_RoofMe"/>
+			<li Class="CompProperties_EngineTrail">
+				<thrust>5</thrust>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShipEngine</li>
+		</placeWorkers>
+		<building>
+			<shipPart>true</shipPart>
+		</building>
+		<costList>
+			<Steel>200</Steel>
+			<Plasteel>40</Plasteel>
+			<ComponentSpacer>12</ComponentSpacer>
+			<RE_ElementZero>20</RE_ElementZero>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<designationHotKey>Misc5</designationHotKey>
+	</ThingDef>
+</Defs>

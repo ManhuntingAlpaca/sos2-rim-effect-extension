@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Unofficial SOS2 + Rim-Effect extension</name>
+	<author>Manhunting Alpaca</author>
+	<supportedVersions><li>1.2</li></supportedVersions>
+	<packageId>unofficial.sos2.rimeffect.extension</packageId>
+    <modDependencies>
+		<li>
+			<packageId>kentington.saveourship2</packageId>
+			<displayName>Save Our Ship 2</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1909914131</steamWorkshopUrl>
+		</li>
+        <li>
+			<packageId>RimEffect.Core</packageId>
+			<displayName>Rimeffect Core</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2479560240</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>Ludeon.RimWorld</li>
+		<li>Ludeon.RimWorld.Royalty</li>
+		<li>kentington.saveourship2</li>
+        <li>RimEffect.Core</li>
+	</loadAfter>
+	<description>Adds a few ship modules inspired by Mass Effect.</description>
+</ModMetaData>
